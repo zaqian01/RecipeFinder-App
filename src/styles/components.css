@@ -1,0 +1,313 @@
+/* SearchBar.js */
+.search-container {
+    display: flex;
+    gap: var(--spacing-sm); /* Use CSS variable for consistency */
+    width: 100%;
+    max-width: 800px; /* Wider search bar */
+    margin: 0 auto var(--spacing-xl) auto; /* Consistent margin */
+    background-color: var(--card-background);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-medium);
+}
+
+.search-container input {
+    flex-grow: 1;
+    padding: 14px 22px; /* Slightly more padding */
+    border: 2px solid var(--border-color); /* Subtle border */
+    border-radius: var(--border-radius-lg); /* Pill shape */
+    font-size: 1.1em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--background-light); /* Light background for input */
+    color: var(--text-dark);
+}
+
+.search-container input::placeholder {
+    color: var(--text-light);
+}
+
+.search-container input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.2); /* Red focus shadow */
+}
+
+.search-container button {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); /* Gradient button */
+    color: white;
+    font-size: 1.1em;
+    padding: 14px 28px; /* Larger padding */
+    border-radius: var(--border-radius-lg);
+    flex-shrink: 0; /* Prevent button from shrinking */
+    box-shadow: 0 6px 15px rgba(255, 107, 107, 0.25);
+}
+
+.search-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.35);
+}
+
+/* RecipeCard.js */
+.recipe-card {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid var(--border-color); /* Subtle border */
+}
+
+.recipe-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-heavy);
+}
+
+.recipe-card-image-container {
+    width: 100%;
+    height: 250px; /* Slightly taller images */
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease-in-out;
+}
+
+.recipe-card:hover img {
+    transform: scale(1.08); /* More pronounced zoom */
+}
+
+.favorite-icon {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background-color: rgba(255, 255, 255, 0.95); /* More opaque background */
+    border-radius: 50%;
+    padding: 10px; /* Larger padding */
+    font-size: 1.6em; /* Larger icon */
+    cursor: pointer;
+    color: var(--text-light); /* Default grey */
+    transition: color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-icon.active {
+    color: var(--primary-color); /* Use primary color for active heart */
+    transform: scale(1.1) rotate(5deg); /* Small rotation when active */
+}
+
+.favorite-icon:hover {
+    transform: scale(1.2); /* Even larger scale on hover */
+    background-color: #f0f0f0;
+}
+
+
+.recipe-card-info {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.recipe-card-info h3 {
+    font-size: 1.4em; /* Slightly larger heading */
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.4;
+    color: var(--text-dark);
+    font-family: var(--font-heading); /* Use heading font */
+}
+
+.recipe-card-info button {
+    background: linear-gradient(90deg, var(--secondary-color), #6DCDC4); /* Gradient for detail button */
+    color: white;
+    width: 100%;
+    margin-top: auto; /* Push button to the bottom */
+    border-radius: var(--border-radius-sm); /* Slightly less rounded than main buttons */
+    padding: 12px 20px;
+    font-size: 1em;
+}
+
+.recipe-card-info button:hover {
+    background: linear-gradient(90deg, #3aa69e, #50B3E7);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(78, 205, 196, 0.3);
+}
+
+/* RecipeDetail.js */
+.recipe-detail {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--shadow-heavy);
+    padding: var(--spacing-xl);
+    width: 90%;
+    max-width: 1000px; /* Wider detail view */
+    margin-top: var(--spacing-xl);
+    animation: fadeInScale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* Smoother animation */
+    border: 1px solid var(--border-color);
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.detail-header {
+    display: flex;
+    justify-content: flex-start; /* Align back button to left */
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.detail-header button {
+    background-color: var(--text-light); /* Muted color for back button */
+    color: white;
+    font-size: 0.95em;
+    padding: 10px 20px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: none; /* No shadow for back button */
+}
+
+.detail-header button:hover {
+    background-color: #6c757d;
+    transform: translateY(-1px); /* Less pronounced lift */
+    box-shadow: none;
+}
+
+.recipe-detail h2 {
+    font-size: 3em; /* Larger title */
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+    font-weight: 800;
+}
+
+.recipe-detail .recipe-meta {
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xl);
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.recipe-detail .recipe-meta i {
+    color: var(--secondary-color);
+    margin-right: var(--spacing-xs);
+}
+
+.recipe-detail img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    margin: 0 auto var(--spacing-xl) auto;
+    box-shadow: var(--shadow-medium);
+}
+
+.recipe-detail-content {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.ingredients-section, .instructions-section {
+    flex: 1;
+    min-width: 350px; /* Ensure sections are not too narrow */
+    background-color: var(--background-light); /* Light background for sections */
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
+}
+
+.ingredients-section h3, .instructions-section h3 {
+    color: var(--primary-color);
+    font-size: 1.8em; /* Larger section headings */
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-heading);
+}
+
+.ingredients-section h3 i, .instructions-section h3 i {
+    color: var(--secondary-color);
+    font-size: 1.1em;
+}
+
+.recipe-detail ul {
+    list-style: none;
+    padding: 0;
+}
+
+.recipe-detail ul li {
+    background-color: var(--card-background); /* White background for list items */
+    padding: 12px 18px; /* More padding */
+    border-radius: var(--border-radius-sm);
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: flex-start; /* Align items to top for multi-line ingredients */
+    gap: var(--spacing-sm);
+    font-size: 1.05em;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Very light shadow for list items */
+}
+
+.recipe-detail ul li::before {
+    content: '\f00c'; /* Font Awesome check icon for list items */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--primary-color);
+    font-size: 1em;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    margin-top: 2px; /* Adjust alignment */
+}
+
+.recipe-detail p {
+    text-align: justify;
+    line-height: 1.8;
+    font-size: 1.1em;
+    white-space: pre-wrap; /* Preserve line breaks from API */
+    color: var(--text-dark);
+}
+
+.video-section {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+}
+
+.video-section h3 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-heading);
+}
+
+.video-section h3 i {
+    color: var(--secondary-color);
+    font-size: 1.1em;
+}
+
+.video-section iframe {
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+}

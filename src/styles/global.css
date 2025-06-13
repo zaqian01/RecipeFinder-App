@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Montserrat:wght@500;700;800&display=swap');
+
+:root {
+    /* Color Palette: Warm & Inviting */
+    --primary-color: #FF6B6B; /* Vibrant Coral Red - Main accent for headings, buttons */
+    --secondary-color: #4ECDC4; /* Aqua Green - Complementary accent for buttons, details */
+    --background-light: #F4F7F6; /* Very light grey/green - Main background */
+    --background-dark: #E0EBEA; /* Slightly darker background tint */
+    --card-background: #FFFFFF; /* Pure white for cards */
+    --text-dark: #34495E; /* Dark slate blue - Primary text */
+    --text-light: #7F8C8D; /* Muted grey - Secondary text, placeholders */
+    --border-color: #E6EBF0; /* Soft border for elements */
+    --shadow-light: rgba(0, 0, 0, 0.06); /* Very subtle shadow */
+    --shadow-medium: rgba(0, 0, 0, 0.12); /* Moderate shadow */
+    --shadow-heavy: rgba(0, 0, 0, 0.20); /* Deeper shadow for focus/hover */
+
+    /* Typography */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Quicksand', sans-serif;
+
+    /* Spacing & Radii */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 30px; /* For pill shapes */
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(135deg, var(--background-light), var(--background-dark)); /* Subtle gradient */
+    color: var(--text-dark);
+    line-height: 1.7; /* Increased line height for readability */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align content to top, but still centered horizontally */
+    padding-top: var(--spacing-xl); /* Padding at the top of the body */
+    padding-bottom: var(--spacing-xl); /* Padding at the bottom */
+    box-sizing: border-box; /* Include padding in element's total width/height */
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Take full width of parent */
+    max-width: 1200px; /* Max width for the main content area */
+    padding: 0 var(--spacing-md); /* Horizontal padding */
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--text-dark); /* Default heading color */
+    margin-top: 0;
+    line-height: 1.2;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    padding: 12px 25px; /* Consistent button padding */
+    border-radius: var(--border-radius-lg); /* Pill shape for all general buttons */
+    font-weight: 600;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space for icon */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+button .fas, button .fab {
+    font-size: 0.9em; /* Adjust icon size within button */
+}

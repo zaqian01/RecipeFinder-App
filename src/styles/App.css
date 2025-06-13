@@ -1,0 +1,213 @@
+.App {
+    width: 100%;
+    max-width: 1200px; /* Consistent with #root max-width */
+    padding: 0 var(--spacing-md); /* Use CSS variable */
+    box-sizing: border-box;
+}
+
+.App-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl); /* Increased margin */
+}
+
+.App-header h1 {
+    font-size: 3.5em; /* Larger, more impactful heading */
+    margin-bottom: var(--spacing-sm);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--primary-color); /* Direct color, not gradient text fill */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08); /* Subtle text shadow */
+}
+
+.App-header p {
+    font-size: 1.3em; /* Larger subheading */
+    color: var(--text-light);
+    max-width: 700px; /* Limit width for readability */
+    margin: 0 auto;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md); /* Use CSS variable */
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-xl); /* Add margin bottom */
+}
+
+.action-buttons button {
+    background: linear-gradient(45deg, var(--secondary-color), #50B3E7); /* New gradient for action buttons */
+    color: white;
+    font-weight: 700;
+    padding: 14px 30px; /* Larger padding */
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 6px 15px rgba(78, 205, 196, 0.25);
+}
+
+.action-buttons button:hover {
+    background: linear-gradient(45deg, #3aa69e, #6dd5ed);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(78, 205, 196, 0.35);
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Larger min-width for cards */
+    gap: var(--spacing-lg); /* Increased gap */
+    margin-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    width: 100%;
+}
+
+.no-results, .loading, .error-message {
+    text-align: center;
+    font-size: 1.4em; /* Larger messages */
+    color: var(--text-dark);
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background-color: var(--card-background);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--border-color);
+}
+
+.loading {
+    color: var(--secondary-color);
+    animation: pulse 1.5s infinite ease-in-out;
+    font-weight: 600;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.03); opacity: 0.9; } /* Subtle pulse */
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.error-message {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 992px) {
+    .App-header h1 {
+        font-size: 3em;
+    }
+    .results-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: var(--spacing-md);
+    }
+    .recipe-detail-content {
+        flex-direction: column; /* Stack ingredients and instructions on smaller tablets */
+    }
+    .ingredients-section, .instructions-section {
+        min-width: unset; /* Allow full width */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: var(--spacing-lg);
+        padding-bottom: var(--spacing-lg);
+    }
+    .App {
+        padding: 0 var(--spacing-sm);
+    }
+    .App-header h1 {
+        font-size: 2.5em;
+    }
+    .App-header p {
+        font-size: 1.1em;
+    }
+    .search-container {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+    }
+    .search-container input {
+        padding: 12px 18px;
+        font-size: 1em;
+    }
+    .search-container button {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+    .action-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    .action-buttons button {
+        width: 100%;
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+    .results-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjusted for smaller screens */
+        gap: var(--spacing-sm);
+    }
+    .recipe-card-image-container {
+        height: 200px; /* Slightly shorter card images */
+    }
+    .recipe-card-info h3 {
+        font-size: 1.2em;
+    }
+    .recipe-detail {
+        padding: var(--spacing-md);
+    }
+    .recipe-detail h2 {
+        font-size: 2.2em;
+    }
+    .recipe-detail .recipe-meta {
+        font-size: 1em;
+        gap: var(--spacing-sm);
+    }
+    .ingredients-section h3, .instructions-section h3, .video-section h3 {
+        font-size: 1.5em;
+    }
+    .video-section iframe {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .App-header h1 {
+        font-size: 2em;
+    }
+    .App-header p {
+        font-size: 0.95em;
+    }
+    .results-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        gap: var(--spacing-sm);
+    }
+    .recipe-card-image-container {
+        height: 180px;
+    }
+    .recipe-card-info h3 {
+        font-size: 1.1em;
+    }
+    .recipe-card-info button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+    .recipe-detail {
+        padding: var(--spacing-sm);
+    }
+    .recipe-detail h2 {
+        font-size: 1.8em;
+    }
+    .recipe-detail p, .recipe-detail ul li {
+        font-size: 0.95em;
+    }
+    .video-section iframe {
+        height: 250px;
+    }
+    .no-results, .loading, .error-message {
+        font-size: 1.1em;
+        padding: var(--spacing-md);
+    }
+}
