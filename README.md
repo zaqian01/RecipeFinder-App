@@ -1,5 +1,7 @@
 # Culinary Compass: Recipe Finder App
 
+Culinary Compass is a dynamic web application designed to help users discover and explore a vast array of recipes from around the world. It fetches recipe data from an external API, providing detailed information about ingredients, instructions, and more. This project showcases my skills in building interactive front-end applications with modern JavaScript libraries.
+
 ## ✨ Features
 
 * **Recipe Search:** Easily search for recipes by name, ingredient, or cuisine.
